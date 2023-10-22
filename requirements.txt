@@ -2,5 +2,4 @@ streamlit>=1.26.0
 langchain
 openai
 chromadb
-sqlite3
 tiktoken
