@@ -11,8 +11,19 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 def generate_response(uploaded_file, openai_api_key, query_text):
     # Load document if file is uploaded
+    # Load document if file is uploaded
     if uploaded_file is not None:
-        documents = [uploaded_file.read().decode()]
+        # Parse the document based on its type
+        if uploaded_file.type == 'application/pdf':
+            documents = [textract.process(uploaded_file, method='pdfminer').decode()]
+        elif uploaded_file.type == 'text/plain':
+            documents = [uploaded_file.read().decode()]
+        elif uploaded_file.type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+            documents = [textract.process(uploaded_file, extension='docx').decode()]
+        else:
+            st.write("Unsupported file type")
+            return
+            
         # Split documents into chunks
         text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
         texts = text_splitter.create_documents(documents)
