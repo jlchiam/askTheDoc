@@ -4,3 +4,4 @@ openai
 chromadb
 tiktoken
 pysqlite3-binary
+textract
