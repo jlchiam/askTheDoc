@@ -16,7 +16,7 @@ def generate_response(uploaded_file, openai_api_key, query_text):
     if uploaded_file is not None:
         # Parse the document based on its type
         if uploaded_file.type == 'application/pdf':
-            documents = [textract.process(uploaded_file.getvalue(), extension=‘pdf’, method=‘pdfminer’).decode()]
+            documents = [textract.process(uploaded_file.getvalue(), extension='pdf', method='pdfminer').decode()]
             # documents = [textract.process(uploaded_file, method='pdfminer').decode()]
         elif uploaded_file.type == 'text/plain':
             documents = [uploaded_file.read().decode()]
