@@ -98,7 +98,7 @@ uploaded_file = st.file_uploader('Upload a PDF, PPTX, DOCX or TXT file', type=["
 # Query text
 query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.', disabled=not uploaded_file)
 
-openai_api_key = "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"
+openai_api_key = "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"
 # Form input and query
 result = []
 with st.form('myform', clear_on_submit=True):
