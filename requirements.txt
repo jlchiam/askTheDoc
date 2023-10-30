@@ -4,5 +4,6 @@ openai
 chromadb
 tiktoken
 pysqlite3-binary
-textract
-pdfminer.six
+PyPDF2
+python-pptx
+python-docx
